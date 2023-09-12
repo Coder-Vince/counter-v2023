@@ -1,23 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import React, { useState } from "react";
+import Header from "./components/Header";
+import Increment from "./components/Increment";
+import Decrement from "./components/Decrement";
+import Reset from "./components/Reset";
+import Footer from "./components/Footer";
+
+// library.add(faEnvelope);
 
 function App() {
+  const [counter, setCounter] = useState(0);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Header />
+      <div className="container">
+        <Decrement counter={counter} setCounter={setCounter} />
+        <div className="counter">{counter}</div>
+        <Increment counter={counter} setCounter={setCounter} />
+      </div>
+      <Reset setCounter={setCounter} />
+      <Footer />
     </div>
   );
 }
